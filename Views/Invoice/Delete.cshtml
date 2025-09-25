@@ -1,0 +1,19 @@
+﻿@model SmartInvoice.Models.Invoice
+
+@{
+    ViewData["Title"] = "Delete Invoice";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-3 text-danger">🗑 Delete Invoice</h2>
+
+    <div class="alert alert-danger text-center w-50 mx-auto">
+        Confirm delete invoice <strong>#@Model.Id</strong> for customer <strong>@Model.Customer?.Name</strong>?
+    </div>
+
+    <form asp-action="Delete" method="post" class="text-center">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">🗑 Delete Confirmation</button>
+        <a asp-action="Index" class="btn btn-secondary">↩ Cancel</a>
+    </form>
+</div>

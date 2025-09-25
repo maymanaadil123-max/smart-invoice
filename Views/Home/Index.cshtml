@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "الرئيسية";
+}
+
+<div class="container mt-5 text-center">
+    <h1 class="text-primary mb-4"> Welcome </h1>
+    <p class="lead text-muted"> Easily manage customer and Invoices  </p>
+
+    <div class="mt-4">
+        <a class="btn btn-outline-primary btn-lg mx-2" asp-controller="Customer" asp-action="Index">Manage customers </a>
+        <a class="btn btn-outline-success btn-lg mx-2" asp-controller="Invoice" asp-action="Index"> Manage Invoices </a>
+    </div>
+</div>

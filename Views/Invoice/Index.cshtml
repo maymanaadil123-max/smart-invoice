@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SmartInvoice.Models.Invoice>
+
+@{
+    ViewData["Title"] = "Invoices";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-3">📄 Invoices</h2>
+
+    <a asp-action="Create" class="btn btn-success mb-3">➕ Add New Invoice</a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>Due Date</th>
+                <th>Amount</th>
+                <th>Currency</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var invoice in Model)
+            {
+                <tr>
+                    <td>@invoice.Id</td>
+                    <td>@invoice.Customer?.Name</td>
+                    <td>@invoice.Date.ToShortDateString()</td>
+                    <td>@invoice.DueDate.ToShortDateString()</td>
+                    <td>@invoice.Amount</td>
+                    <td>@invoice.Currency</td>
+                    <td>@invoice.Status</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@invoice.Id" class="btn btn-info btn-sm">🔍 Details</a>
+                        <a asp-action="Edit" asp-route-id="@invoice.Id" class="btn btn-warning btn-sm">✏ Edit</a>
+                        <a asp-action="Delete" asp-route-id="@invoice.Id" class="btn btn-danger btn-sm">🗑 Delete</a>
+                        <a href="mailto:@invoice.Customer.Email?subject=فاتورتك&body=مرحباً @invoice.Customer.Name،%0D%0Aيرجى مراجعة الفاتورة المرفقة."
+                           class="btn btn-primary btn-sm">
+                            📧 Send Email
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SmartInvoice.Models.Customer>
+
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-3">👥 Customers</h2>
+
+    <a asp-action="Create" class="btn btn-success mb-3">➕ Add New Customer</a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@customer.Id</td>
+                    <td>@customer.Name</td>
+                    <td>@customer.Email</td>
+                    <td>@customer.Phone</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@customer.Id" class="btn btn-info btn-sm">🔍 Details</a>
+                        <a asp-action="Edit" asp-route-id="@customer.Id" class="btn btn-warning btn-sm">✏ Edit</a>
+                        <a asp-action="Delete" asp-route-id="@customer.Id" class="btn btn-danger btn-sm">🗑 Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

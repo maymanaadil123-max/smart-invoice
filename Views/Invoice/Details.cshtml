@@ -1,0 +1,29 @@
+﻿@model SmartInvoice.Models.Invoice
+
+@{
+    ViewData["Title"] = "Invoice Details";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-3">🔍 Invoice Details</h2>
+
+    <div class="card w-50 mx-auto">
+        <div class="card-body">
+            <p><strong>ID:</strong> @Model.Id</p>
+            <p><strong>Customer:</strong> @Model.Customer?.Name</p>
+            <p><strong>Date:</strong> @Model.Date.ToShortDateString()</p>
+            <p><strong>Due Date:</strong> @Model.DueDate.ToShortDateString()</p>
+            <p><strong>Quantity:</strong> @Model.Quantity</p>
+            <p><strong>Price:</strong> @Model.Price</p>
+            <p><strong>Amount:</strong> @Model.Amount</p>
+            <p><strong>Currency:</strong> @Model.Currency</p>
+            <p><strong>Status:</strong> @Model.Status</p>
+            <p><strong>Description:</strong> @Model.Description</p>
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">✏ Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">↩ Back</a>
+    </div>
+</div>
